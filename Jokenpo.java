@@ -16,50 +16,67 @@ import java.util.Scanner;
 			//Quantidade de radadas / jogadas
 			int rodadas = 0;
 			//Input de dados
-			Scanner input2 = new Scanner(system.in);
+			Scanner input2 = new Scanner(System.in);
 			Scanner input = new Scanner(System.in);
 			//Perguntar para o jogador a quantidade de rodadas
-			System.out.println("::: JOKENPÔ :::");
-			System.out.println("Insira a quantidade de rodadas: ");
-			rodadas = input.nextInt();
 			//Reinicia jogo - Vale 0,25
-			while(reiniciar == 1) {
+			while(reiniciar == 1 ) {
+				System.out.println("::: JOKENPÔ :::");
+				System.out.println("Insira a quantidade de rodadas: ");
+				rodadas = input.nextInt();
 				for(int i = 1; i <= rodadas; ++i) {
+					
 					escolhaComputador = (int) (Math.random()*3)+1;
 					rotuloEscolhaJogador();
 					escolhaJogador = input.nextInt();
 					verificaResultado();
 					exibePlacar();
-					System.out.println("Deseja continuar?");
-					System.out.println(" (0) NÃO (1) SIM ");
-					reiniciar = input2.nextInt();
-				
 				}	
+				System.out.println("Deseja continuar?");
+				System.out.println(" (0) NÃO (1) SIM ");
+				reiniciar = input2.nextInt();
 			}
+			System.out.println("Obrigado por jogar");
 			
 			
 //Reinicia jogo - Vale 0,25
 }
 //Verifica condição de vitória e derrota
-		private static void verificaResultado() {
-			if(escolhaJogador == 1 && escolhaComputador == 2) {
-				++placarComputador;
-			} else if(escolhaJogador == 2 && escolhaComputador == 3) {
-				++placarComputador;
-			} else if()
-				
-
 //Vale 0,25
 //Usar o if para verificar e comparar as escolhas
 //Quem ganha recebe pontos
 //A pontuação deve ser atribuidas nas variáveis
 //placarJogador E placarComputador
+		private static void verificaResultado() {
+			//Condições onde o computador ganha
+			if(escolhaJogador == 1 && escolhaComputador == 2) {
+				++placarComputador;
+			} else if(escolhaJogador == 2 && escolhaComputador == 3) {
+				++placarComputador;
+			} else if(escolhaJogador == 3 && escolhaComputador == 1){
+				++placarComputador;
+			}
+			//Condições onde o jogador ganha
+			else if(escolhaJogador == 1 && escolhaComputador == 3){
+				++placarJogador;
+			} else if(escolhaJogador == 2 && escolhaComputador == 1){
+				++placarJogador;
+			} else if(escolhaJogador == 3 && escolhaComputador == 2){
+				++placarJogador;
+			}
+			//Condições de empate (escolha do jogador == escolha do computador)
+			else{
+				System.out.println("Empate!");
+			}
+				
+
+		
 }
 //Exibe o resultado do placar
 //placarJogador E placarComputador
-		private static void exibePlacar() {
 //Vale 0,25
 //Seu código aqui
+		private static void exibePlacar() {
 			System.out.println("::: PLACAR");
 			System.out.println("Jogador: " + placarJogador);
 			System.out.println("Computador " + placarComputador);
